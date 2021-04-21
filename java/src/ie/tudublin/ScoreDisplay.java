@@ -10,11 +10,14 @@ import processing.data.*;
 
 public class ScoreDisplay extends PApplet
 {
-	//String score = "DEFGABcd";
+	String score = "DEFGABcd";
 	//String score = "D2E2F2G2A2B2c2d2";
-	String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
+	//String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
 
 	ArrayList<String> notes = new ArrayList<String>();
+	//changed to String because couldn't figure out adding string score to arrayList<Note>
+
+	public float border = 50;
 
 
 	public void loadScore() {
@@ -88,17 +91,32 @@ public class ScoreDisplay extends PApplet
 	{
 		background(255);
 		drawLines();
+		drawNotes();
 		
 	}
 
-	void drawNotes()
+	 public void drawNotes()
 	{
+		for(int i = 1; i<notes.size() + 1; i++){
+			fill(0);
+			ellipse(border *i *2,height - border*i,75,75);
+			line(border *i *2+35,height - border*i,border *i *2+35,height - border*i-200);		
+		}
+
+		for(int i =0; i<notes.size(); i++){
+		textSize(24);
+		text(notes.get(i), border *(i+1) *2,border);
+		}
+		
+
 	}
 
-	public float border = 50;
+
+	
 
 	public void drawLines(){
 		stroke(0);
+		strokeWeight(2);
 		
 		for(int i = 2; i<7; i++){
 			line(border, border * i*2, width- border, border * i*2);	
