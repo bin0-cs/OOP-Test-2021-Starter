@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import processing.core.PApplet;
+import processing.data.*;
 
 public class ScoreDisplay extends PApplet
 {
@@ -58,16 +59,16 @@ public class ScoreDisplay extends PApplet
 
 	}
 	
-	private void elseif(boolean b) {
+	/*private void elseif(boolean b) {
 	}
 
 	private boolean isDigit(char charAt) {
 		return false;
-	}
+	}*/
 
 	public void settings()
 	{
-		size(1000, 500);
+		size(1000, 700);
 
 		// How to convert a character to a number
 		char c = '7'; // c holds the character 7 (55)
@@ -79,16 +80,29 @@ public class ScoreDisplay extends PApplet
 	{
 		loadScore();
 		printScores();
+		drawLines();
 		
 	}
 
 	public void draw()
 	{
 		background(255);
+		drawLines();
 		
 	}
 
 	void drawNotes()
 	{
+	}
+
+	public float border = 50;
+
+	public void drawLines(){
+		stroke(0);
+		
+		for(int i = 2; i<7; i++){
+			line(border, border * i*2, width- border, border * i*2);	
+		}
+
 	}
 }
