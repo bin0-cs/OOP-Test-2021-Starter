@@ -13,12 +13,14 @@ public class ScoreDisplay extends PApplet
 	//String score = "D2E2F2G2A2B2c2d2";
 	String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
 
-	ArrayList<Note> notes = new ArrayList<Note>();
+	ArrayList<String> notes = new ArrayList<String>();
 
 
 	public void loadScore() {
 
-		//String[] splitstr = score.split("");
+		String[] splitstr = score.split("");
+
+		notes.addAll(Arrays.asList(splitstr));
 
 		/*
 
@@ -43,8 +45,17 @@ public class ScoreDisplay extends PApplet
 	
 		/*Collections.addAll(notes,splitstr);
 		notes.addAll(Arrays.asList(splitstr));*/
-		print(notes);
+		//print(notes);
 		
+	}
+
+	public void printScores(){
+
+		for(String note : notes){
+
+			println(note);
+		}
+
 	}
 	
 	private void elseif(boolean b) {
@@ -67,6 +78,7 @@ public class ScoreDisplay extends PApplet
 	public void setup() 
 	{
 		loadScore();
+		printScores();
 		
 	}
 
